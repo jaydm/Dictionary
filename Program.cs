@@ -6,14 +6,15 @@ namespace GenericImplementation
     {
         static void Main(string[] args)
         {
-            Dictionarys<string, int> dic = new Dictionarys<string, int>();
-            dic.Insert("A", 567);
-            dic.Insert("B", 897);
-            dic.Insert("N", 8898);
-            dic.Insert("C", 6665);
-          //  
-           // dic.Clear();
-            Console.WriteLine(dic.exist("A"));
+            Dictionarys<int, int> dic = new Dictionarys<int, int>();
+            dic.Insert(2, 567);
+            dic.Insert(4, 897);
+            dic.Insert(7, 8898);
+            dic.Insert(6, 6665);
+            //  
+            // dic.Clear();
+            Console.WriteLine(   dic.Remove(2));
+            Console.WriteLine(dic[4]);
             Console.WriteLine(dic.Count);
         }
     }

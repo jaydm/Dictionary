@@ -51,9 +51,10 @@ namespace GenericImplementation
         {
             int hashf = Math.Abs(key.GetHashCode() % table.Length);
             Entry<K, V> slot = table[hashf];
-            if (!key.Equals(slot.Key) && slot == null) // if the key doesnt exist here
+            if (!key.Equals(slot.Key) ) // if the key doesnt exist here
             {
-                throw new ArgumentException("Key doesnt exist");
+             throw new ArgumentException("Key doesnt exist");
+      
             }
             while (slot != null)
             {
@@ -84,19 +85,28 @@ namespace GenericImplementation
         }
         public void Remove(K key)
         {
+            
             int hashf = Math.Abs(key.GetHashCode() % table.Length);
             Entry<K, V> slot = table[hashf];
+            Entry<K, V> prev = null;
             if (!key.Equals(slot.Key) && slot == null) // if the key doesnt exist here
             {
                 throw new ArgumentException("Key doesnt exist");
             }
             while (slot != null)
             {
-                if (key.Equals(slot.Key))
-                {
-
-                }
+                prev = slot;
+                slot = slot.Next;
             }
+
+            
+                if(prev != null)
+                {                                 
+                    table[hashf] = null; // set required key to null
+                }
+          
+            count--;
+            return ;
         }
     }
 }
